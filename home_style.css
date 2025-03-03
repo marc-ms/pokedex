@@ -9,13 +9,13 @@ header {
 #root {
     display: flex;
     justify-content: center;
-    max-width: 1200px;
+    max-width: 1600px;
     flex-wrap: wrap;
 }
 
 #root div {
     flex: 1 0 25%;
-    margin: 1%;
+    margin: 2%;
     border-radius: 10px;
     text-align: center;
     background-color: greenyellow;

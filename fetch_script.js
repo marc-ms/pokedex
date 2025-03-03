@@ -1,24 +1,45 @@
 //functions
 
-const fetchPokemons = async () => { // asynchronous function await
+/* const fetchPokemons = async () => { // asynchronous function await
     let pokemones = [];
     try {
         const url = "https://pokeapi.co:443/api/v2/pokemon?limit=151";
         const response = await fetch(url); // default option GET
         const data = await response.json();
         pokemones = data["results"];
+        return pokemones;
     } catch (error) {
         console.log("Failed to get pokemon", error);
         allPokemonContainer.innerHTML = "<li>Failed to load</li>"; //html embedding
         return; // if anything fails, stope here
     }
 
-    pokemones.forEach(function(pokemon){
+   pokemones.forEach(function(pokemon){
         fetchPokemonDetails(pokemon)
     })
+
+} */
+
+async function getPokemon(startIndex, stopIndex){
+    let requests = [];
+    for (let i = startIndex; i <= stopIndex; i++) {
+        requests.push(apiPokemon("https://pokeapi.co/api/v2/pokemon/" + i));
+    }
+
+    let pokemonList = await Promise.all(requests); // async to get pokemon in order
+    for (let pokemon of pokemonList) {
+        renderPokemon(pokemon);
+    }
 }
 
-function fetchPokemonDetails(pokemon) {
+async function apiPokemon(url){
+    const response = await fetch(url);
+    const pokemonData = await response.json();
+
+    return pokemonData;
+}
+
+/* function fetchPokemonDetails(pokemon) {
     let url = pokemon.url;
     fetch(url)
     .then(response => response.json())
@@ -26,7 +47,7 @@ function fetchPokemonDetails(pokemon) {
         console.log(pokeData)
         renderPokemon(pokeData)
     })
-}
+} */
 
 function renderPokemon(pokeData) {
     const allPokemonContainer = document.getElementById("root");
@@ -60,4 +81,4 @@ function createTypes(types, ul) {
     })
 }
 
-fetchPokemons();
+getPokemon(1, 151);
