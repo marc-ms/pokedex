@@ -12,7 +12,6 @@ const fetchPokemon = async () => { // asynchronous function await
         const response = await fetch(url); // default option GET
         const data = await response.json();
         pokemones = data["results"];
-        console.log(pokemones);
     } catch (error) {
         console.log("Failed to get pokemon", error);
         allPokemonContainer.innerHTML = "<li>Failed to load</li>"; //html embedding
@@ -29,7 +28,7 @@ function fetchPokemonDetails(pokemon) {
     fetch(url)
     .then(response => response.json())
     .then(function(pokeData) {
-    
+        console.log(pokeData)
         renderPokemon(pokeData)
     })
 }
@@ -47,7 +46,10 @@ function renderPokemon(pokeData) {
     let pokeTypes = document.createElement('ul')
     createTypes(pokeData.types, pokeTypes)
 
-    pokeContainer.append(pokeName, pokeNumber, pokeTypes);
+    let pokeSprites = document.createElement('img')
+    pokeSprites.srcset = pokeData.sprites['front_default']
+
+    pokeContainer.append(pokeName, pokeNumber, pokeTypes, pokeSprites);
     allPokemonContainer.appendChild(pokeContainer);
 
 }
