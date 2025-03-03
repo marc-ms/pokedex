@@ -8,19 +8,46 @@ header {
 
 #root {
     display: flex;
-    /*
-    box-sizing: border-box;
-    flex-direction: row;
-    */
+    justify-content: center;
+    max-width: 1200px;
     flex-wrap: wrap;
-    margin: 5%;
 }
 
 #root div {
-    flex: 1 0 21%;
-    margin: 5%;
+    flex: 1 0 25%;
+    margin: 1%;
+    border-radius: 10px;
     text-align: center;
     background-color: greenyellow;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.5);
+}
+
+img {
+    width: 150px;
+    top: 10px;
+    position: relative;
+    aspect-ratio: 1/1;
+    z-index: 10;
+    image-rendering: pixelated;
+}
+
+.name {
+    padding: 10px;
+    letter-spacing: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.2em;
+    white-space: nowrap;
+    text-overflow: clip;
+  }
+
+.id {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.8em;
+    background-color: aqua;
+}
+
+.types {
+    font-size: 1.2em;
 }
 
 footer {

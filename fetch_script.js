@@ -1,12 +1,7 @@
-// variables
-let pokemones = [];
-
-
 //functions
 
-const fetchPokemon = async () => { // asynchronous function await
-    console.log('init fetch pokemon');
-
+const fetchPokemons = async () => { // asynchronous function await
+    let pokemones = [];
     try {
         const url = "https://pokeapi.co:443/api/v2/pokemon?limit=151";
         const response = await fetch(url); // default option GET
@@ -37,19 +32,22 @@ function renderPokemon(pokeData) {
     const allPokemonContainer = document.getElementById("root");
     let pokeContainer = document.createElement('div');
 
-    let pokeName = document.createElement('h4')
-    pokeName.innerText = pokeData.name
-
-    let pokeNumber = document.createElement('p')
-    pokeNumber.innerText = `#${pokeData.id}`
-
-    let pokeTypes = document.createElement('ul')
-    createTypes(pokeData.types, pokeTypes)
-
     let pokeSprites = document.createElement('img')
     pokeSprites.srcset = pokeData.sprites['front_default']
 
-    pokeContainer.append(pokeName, pokeNumber, pokeTypes, pokeSprites);
+    let pokeName = document.createElement('h4')
+    pokeName.classList.add('name')
+    pokeName.innerText = pokeData.name.toUpperCase()
+
+    let pokeNumber = document.createElement('p')
+    pokeNumber.classList.add('id')
+    pokeNumber.innerText = `#${pokeData.id}`
+
+    let pokeTypes = document.createElement('ul')
+    pokeTypes.classList.add('types')
+    createTypes(pokeData.types, pokeTypes)
+
+    pokeContainer.append(pokeSprites, pokeName, pokeNumber, pokeTypes);
     allPokemonContainer.appendChild(pokeContainer);
 
 }
@@ -62,4 +60,4 @@ function createTypes(types, ul) {
     })
 }
 
-fetchPokemon();
+fetchPokemons();
