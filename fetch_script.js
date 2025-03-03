@@ -1,6 +1,5 @@
 // variables
-const pokemonContainer = document.getElementById("pokemon-list");
-let pokemon = [];
+let pokemones = [];
 
 
 //functions
@@ -12,20 +11,53 @@ const fetchPokemon = async () => { // asynchronous function await
         const url = "https://pokeapi.co:443/api/v2/pokemon?limit=151";
         const response = await fetch(url); // default option GET
         const data = await response.json();
-        pokemon = data["results"];
-        console.log(pokemon);
+        pokemones = data["results"];
+        console.log(pokemones);
     } catch (error) {
         console.log("Failed to get pokemon", error);
-        pokemonContainer.innerHTML = "<li>Failed to load</li>"; //html embedding
+        allPokemonContainer.innerHTML = "<li>Failed to load</li>"; //html embedding
         return; // if anything fails, stope here
     }
 
-    let template = "";
-    pokemon.forEach((iPokemon, index) => {
-        template += `<li>${index + 1} ${iPokemon.name}</li>`;
-    });
+    pokemones.forEach(function(pokemon){
+        fetchPokemonDetails(pokemon)
+    })
+}
 
-    pokemonContainer.innerHTML = template;
+function fetchPokemonDetails(pokemon) {
+    let url = pokemon.url;
+    fetch(url)
+    .then(response => response.json())
+    .then(function(pokeData) {
+    
+        renderPokemon(pokeData)
+    })
+}
+
+function renderPokemon(pokeData) {
+    const allPokemonContainer = document.getElementById("root");
+    let pokeContainer = document.createElement('div');
+
+    let pokeName = document.createElement('h4')
+    pokeName.innerText = pokeData.name
+
+    let pokeNumber = document.createElement('p')
+    pokeNumber.innerText = `#${pokeData.id}`
+
+    let pokeTypes = document.createElement('ul')
+    createTypes(pokeData.types, pokeTypes)
+
+    pokeContainer.append(pokeName, pokeNumber, pokeTypes);
+    allPokemonContainer.appendChild(pokeContainer);
+
+}
+
+function createTypes(types, ul) {
+    types.forEach( function(type) {
+        let typeLi = document.createElement('li');
+        typeLi.innerText = type['type']['name'];
+        ul.append(typeLi)
+    })
 }
 
 fetchPokemon();

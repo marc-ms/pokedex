@@ -1,0 +1,28 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header {
+    text-align: center;
+}
+
+#root {
+    display: flex;
+    /*
+    box-sizing: border-box;
+    flex-direction: row;
+    */
+    flex-wrap: wrap;
+    margin: 5%;
+}
+
+#root div {
+    flex: 1 0 21%;
+    margin: 5%;
+    text-align: center;
+    background-color: greenyellow;
+}
+
+footer {
+    text-align: center;
+}
