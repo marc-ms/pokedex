@@ -13,16 +13,16 @@ header {
     flex-wrap: wrap;
 }
 
-#root div {
+#root > div {
     flex: 1 0 25%;
     margin: 2%;
     border-radius: 10px;
     text-align: center;
-    background-color: greenyellow;
+   
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.5);
 }
 
-img {
+.sprites_img {
     width: 150px;
     top: 10px;
     position: relative;
@@ -46,9 +46,6 @@ img {
     background-color: aqua;
 }
 
-.types {
-    font-size: 1.2em;
-}
 
 footer {
     text-align: center;
