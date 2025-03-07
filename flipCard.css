@@ -1,0 +1,21 @@
+.card-container:hover .pokemon {
+    transform: rotateX(-180deg);
+    cursor: pointer;
+    transition: 0.4s ease-in;
+    transition-delay: .3s;
+}
+
+.front,
+.back {
+    backface-visibility: hidden;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+}
+
+.back {
+    transform: rotateX(180deg);
+}
+

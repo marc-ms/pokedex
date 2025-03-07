@@ -8,9 +8,10 @@ async function getPokemon(startIndex, stopIndex){
 
     let pokemonList = await Promise.all(requests); // async to get pokemon in order
     for (let pokemon of pokemonList) {
-        console.log(pokemon)
         renderPokemon(pokemon);
+        
     }
+    //turnCardOver();
 }
 
 async function apiPokemon(url){
@@ -21,29 +22,50 @@ async function apiPokemon(url){
 }
 
 function renderPokemon(pokeData) {
-    const allPokemonContainer = document.getElementById("root");
-    let pokeContainer = document.createElement('div');
+    let pokeContainer = document.getElementById('poke-container');
 
-    let pokeSprites = document.createElement('img')
-    pokeSprites.classList.add('sprites_img')
-    pokeSprites.srcset = pokeData.sprites['front_default']
+    let cardContainer = document.createElement('div');
+    cardContainer.classList.add('card-container');
+
+    let pokemon = document.createElement('div');
+    pokemon.classList.add('pokemon');
+    pokemon.setAttribute("id", pokeData.id)
+
+    let pokemonFront = document.createElement('div');
+    pokemonFront.classList.add('front', 'face');
+    
+
+    let pokemonBack = document.createElement('div');
+    pokemonBack.classList.add('back', 'face');
+    
+
+    let pokeSpritesFront = document.createElement('img')
+    pokeSpritesFront.classList.add('sprites_img')
+    pokeSpritesFront.srcset = pokeData.sprites['front_default']
+    pokeSpritesFront.setAttribute('alt', pokeData.name);
+
+    let pokeSpritesBack = document.createElement('img')
+    pokeSpritesBack.classList.add('sprites_img')
+    pokeSpritesBack.srcset = pokeData.sprites['back_default'];
+    pokeSpritesBack.setAttribute('alt', pokeData.name);
 
     let pokeName = document.createElement('h4')
     pokeName.classList.add('name')
     pokeName.innerText = pokeData.name.toUpperCase()
 
-    let pokeNumber = document.createElement('p')
+    let pokeNumber = document.createElement('span')
     pokeNumber.classList.add('id')
     pokeNumber.innerText = `#${pokeData.id}`
 
     let pokeTypes = document.createElement('div')
     pokeTypes.classList.add('div_types')
-    createTypes(pokeData.types, pokeTypes, pokeContainer)
+    createTypes(pokeData.types, pokeTypes, pokemon)
     
-
-    pokeContainer.append(pokeSprites, pokeName, pokeNumber, pokeTypes);
-    allPokemonContainer.appendChild(pokeContainer);
-
+    pokemonBack.append(pokeSpritesBack);
+    pokemonFront.append(pokeSpritesFront, pokeName, pokeNumber, pokeTypes);
+    pokemon.append(pokemonFront, pokemonBack);
+    cardContainer.appendChild(pokemon);
+    pokeContainer.appendChild(cardContainer);
 }
 
 function createTypes(types, div, pokeContainer) {
@@ -60,5 +82,14 @@ function createTypes(types, div, pokeContainer) {
     })
     pokeContainer.classList.add(types[0]['type']['name']);
 }
+
+function turnCardOver() {
+    let pokeCard = document.querySelectorAll('.div_pokemon');
+    pokeCard.forEach(function(card) {
+        card.addEventListener('mouseover', function() {
+            console.log('hover');
+            card.classList.toggle('flipped');
+        })
+    })}
 
 getPokemon(1, 151);
