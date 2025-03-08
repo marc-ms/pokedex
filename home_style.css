@@ -1,3 +1,25 @@
+:root {
+    --grass: #262825;
+    --bug: #92bc2c;
+    --dark: #595761;
+    --dragon: #0c69c8;
+    --electric: #f2d94e;
+    --fairy: #ee90e6;
+    --fighting: #d3425f;
+    --fire: #dc872f;
+    --flying: #a1bbec;
+    --ghost: #5f6dbc;
+    --ground: #da7c4d;
+    --ice: #75d0c1;
+    --normal: #a0a29f;
+    --poison: #b763cf;
+    --psychic: #ff2ca8;
+    --rock: #a38c21;
+    --steel: #5695a3;
+    --water: #539ddf;
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -8,6 +30,7 @@
 
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
 
 header {
@@ -26,12 +49,12 @@ div {
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    max-width: 1600px;
+    /* min and max to mantain 3 cards per row */
+    min-width: 675px;
+    max-width: 800px;
+    gap: 20px;
 }
 
-.card-container {
-    margin: 10px;
-}
 
 .pokemon {
     background-color: #eee;
@@ -52,29 +75,22 @@ div {
 }
 
 .face {
-    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-between !important;
     align-items: center;
+    gap: 20px;
+    width: 80%;
 }
 
 .front {
     position: absolute;
 }
 
-/* .face {
-    flex: 1 0 25%;
-    border-radius: 10px;
-    text-align: center;
-    margin: 1%;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.5);
-} */
-
 .sprites_img {
-   width: 75%;
-   height: auto; 
-   image-rendering: pixelated;
+    width: 75%;
+    height: auto;
+    image-rendering: pixelated;
 }
 
 .name {
@@ -84,9 +100,99 @@ div {
     font-size: 1.2em;
     white-space: nowrap;
     text-overflow: clip;
-  }
+}
 
 
 footer {
     text-align: center;
+}
+
+#\3 {
+    background: #262825;
+    box-shadow: 0 0 20px var(--grass);
+}
+
+.bug {
+    background: var(--bug);
+    box-shadow: 0 0 20px var(--bug);
+}
+
+.dark {
+    background: var(--dark);
+    box-shadow: 0 0 20px var(--dark);
+}
+
+.dragon {
+    background: var(--dragon);
+    box-shadow: 0 0 20px var(--dragon);
+}
+
+.electric {
+    background: var(--electric);
+    box-shadow: 0 0 20px #796d26;
+}
+
+.fairy {
+    background: var(--fairy);
+    box-shadow: 0 0 20px var(--fairy);
+}
+
+.fighting {
+    background: var(--fighting);
+    box-shadow: 0 0 20px var(--fighting);
+}
+
+.flying {
+    background: var(--flying);
+    box-shadow: 0 0 20px var(--flying);
+}
+
+.ghost {
+    background: var(--ghost);
+    box-shadow: 0 0 20px var(--ghost);
+}
+
+.ground {
+    background: var(--ground);
+    box-shadow: 0 0 20px var(--ground);
+}
+
+.ice {
+    background: var(--ice);
+    box-shadow: 0 0 20px var(--ice);
+}
+
+.normal {
+    background: var(--normal);
+    box-shadow: 0 0 20px var(--normal);
+}
+
+.poison {
+    background: var(--poison);
+    box-shadow: 0 0 20px var(--poison);
+}
+
+.psychic {
+    background: var(--psychic);
+    box-shadow: 0 0 20px var(--psychic);
+}
+
+.rock {
+    background: var(--rock);
+    box-shadow: 0 0 20px var(--rock);
+}
+
+.steel {
+    background: var(--steel);
+    box-shadow: 0 0 20px var(--steel);
+}
+
+.water {
+    background: var(--water);
+    box-shadow: 0 0 20px var(--water);
+}
+
+.fire {
+    background: var(--fire);
+    box-shadow: 0 0 20px var(--fire);
 }

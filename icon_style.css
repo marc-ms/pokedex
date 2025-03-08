@@ -21,13 +21,13 @@
 
 .div_types {
     display: flex;
-    
+    gap: 20px;
 }
 
 .poke__type__icon {
     width: 45px;
     height: 45px;
-    border-radius: 25px;
+    border-radius: 15px;
     margin: auto;
     display: flex;
     justify-content: space-around;
