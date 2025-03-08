@@ -1,8 +1,12 @@
+.card-container .pokemon {
+    transition: 0.4s ease-in;
+}
+
 .card-container:hover .pokemon {
     transform: rotateX(-180deg);
     cursor: pointer;
-    transition: 0.4s ease-in;
-    transition-delay: .3s;
+    transition: 1s ease-in-out;
+    transition-delay: .1s;
 }
 
 .front,

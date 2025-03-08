@@ -1,0 +1,229 @@
+:root {
+    --grassCard: #4cd407b4;
+    --bugCard: #92bc2c;
+    --darkCard: #595761;
+    --dragonCard: #0c69c8;
+    --electricCard: #f2d94e;
+    --fairyCard: #ee90e6;
+    --fightingCard: #d3425f;
+    --fireCard: #bb6508ae;
+    --flyingCard: #a1bbec;
+    --ghostCard: #5f6dbc;
+    --groundCard: #da7c4d;
+    --iceCard: #75d0c1;
+    --normalCard: #a0a29f;
+    --poisonCard: #b763cf;
+    --psychicCard: #ff2ca8;
+    --rockCard: #a38c21;
+    --steelCard: #5695a3;
+    --waterCard: #539ddf;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+header {
+    text-align: center;
+    margin: 50px;
+}
+
+div {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+#poke-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    /* min and max to mantain 3 cards per row */
+    min-width: 675px;
+    max-width: 800px;
+    gap: 20px;
+}
+
+
+.pokemon {
+    background-color: #eee;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    align-items: center;
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: 0.25sease-in;
+    max-width: 210px;
+    min-width: 210px;
+    min-height: 330px;
+    max-height: 330px;
+    color: #202020;
+    perspective: 150rem;
+    position: relative;
+}
+
+.face {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between !important;
+    align-items: center;
+    gap: 20px;
+    width: 80%;
+}
+
+.front {
+    position: absolute;
+    
+}
+
+.back {
+    position: absolute;
+    gap: 0;
+    
+}
+
+.stats-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-right: auto;
+}
+
+
+.stats-container * {
+    display: flex;
+    width: 160%;
+}
+
+.stat-name {
+    width: fit-content;
+
+}
+
+.stat-number {
+    width: fit-content;
+    margin-left: auto;
+}
+
+
+.sprites_img {
+    width: 90%;
+    height: auto;
+    image-rendering: pixelated;
+}
+
+.name {
+    padding: 10px;
+    letter-spacing: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.2em;
+    white-space: nowrap;
+    text-overflow: clip;
+}
+
+
+footer {
+    text-align: center;
+}
+
+.pokemon.grass {
+    background-color: var(--grassCard);
+    box-shadow: 0 0 20px var(--grassCard);
+}
+
+.pokemon.bug {
+    background: var(--bugCard);
+    box-shadow: 0 0 20px var(--bugCard);
+}
+
+.pokemon.dark {
+    background: var(--darkCard);
+    box-shadow: 0 0 20px var(--darkCard);
+}
+
+.pokemon.dragon {
+    background: var(--dragonCard);
+    box-shadow: 0 0 20px var(--dragonCard);
+}
+
+.pokemon.electric {
+    background: var(--electricCard);
+    box-shadow: 0 0 20px #796d26;
+}
+
+.pokemon.fairy {
+    background: var(--fairyCard);
+    box-shadow: 0 0 20px var(--fairyCard);
+}
+
+.pokemon.fighting {
+    background: var(--fightingCard);
+    box-shadow: 0 0 20px var(--fightingCard);
+}
+
+.pokemon.flying {
+    background: var(--flyingCard);
+    box-shadow: 0 0 20px var(--flyingCard);
+}
+
+.pokemon.ghost {
+    background: var(--ghostCard);
+    box-shadow: 0 0 20px var(--ghostCard);
+}
+
+.pokemon.ground {
+    background: var(--groundCard);
+    box-shadow: 0 0 20px var(--groundCard);
+}
+
+.pokemon.ice {
+    background: var(--iceCard);
+    box-shadow: 0 0 20px var(--iceCard);
+}
+
+.pokemon.normal {
+    background: var(--normalCard);
+    box-shadow: 0 0 20px var(--normalCard);
+}
+
+.pokemon.poison {
+    background: var(--poisonCard);
+    box-shadow: 0 0 20px var(--poisonCard);
+}
+
+.pokemon.psychic {
+    background: var(--psychicCard);
+    box-shadow: 0 0 20px var(--psychicCard);
+}
+
+.pokemon.rock {
+    background: var(--rockCard);
+    box-shadow: 0 0 20px var(--rockCard);
+}
+
+.pokemon.steel {
+    background: var(--steelCard);
+    box-shadow: 0 0 20px var(--steelCard);
+}
+
+.pokemon.water {
+    background: var(--waterCard);
+    box-shadow: 0 0 20px var(--waterCard);
+}
+
+.pokemon.fire {
+    background: var(--fireCard);
+    box-shadow: 0 0 20px var(--fireCard);
+}

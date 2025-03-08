@@ -8,10 +8,9 @@ async function getPokemon(startIndex, stopIndex){
 
     let pokemonList = await Promise.all(requests); // async to get pokemon in order
     for (let pokemon of pokemonList) {
+        console.log(pokemon);
         renderPokemon(pokemon);
-        
     }
-    //turnCardOver();
 }
 
 async function apiPokemon(url){
@@ -37,6 +36,10 @@ function renderPokemon(pokeData) {
 
     let pokemonBack = document.createElement('div');
     pokemonBack.classList.add('back', 'face');
+
+    let pokemonStats = document.createElement('div');
+    pokemonStats.classList.add('stats-container');
+    createStats(pokeData.stats, pokemonStats);
     
 
     let pokeSpritesFront = document.createElement('img')
@@ -60,8 +63,9 @@ function renderPokemon(pokeData) {
     let pokeTypes = document.createElement('div')
     pokeTypes.classList.add('div_types')
     createTypes(pokeData.types, pokeTypes, pokemon)
+
     
-    pokemonBack.append(pokeSpritesBack);
+    pokemonBack.append(pokemonStats, pokeSpritesBack);
     pokemonFront.append(pokeSpritesFront, pokeName, pokeNumber, pokeTypes);
     pokemon.append(pokemonFront, pokemonBack);
     cardContainer.appendChild(pokemon);
@@ -83,13 +87,35 @@ function createTypes(types, div, pokeContainer) {
     pokeContainer.classList.add(types[0]['type']['name']);
 }
 
-function turnCardOver() {
-    let pokeCard = document.querySelectorAll('.div_pokemon');
-    pokeCard.forEach(function(card) {
-        card.addEventListener('mouseover', function() {
-            console.log('hover');
-            card.classList.toggle('flipped');
-        })
-    })}
+function createStats(stats, div) {
+    stats.forEach(function(stat) {
+        let statName = stat['stat']['name'];
+        let statNumber = stat['base_stat'];
+
+        let statNameHtml = document.createElement('h4');
+        statNameHtml.classList.add('stat-name');
+        statNameHtml.innerText = statName.toUpperCase();
+
+        if (statName == "special-attack") {
+            statNameHtml.innerText = "sp. atk".toUpperCase();
+        }
+
+        if (statName == "special-defense") {
+            statNameHtml.innerText = "sp. def".toUpperCase();
+        }
+
+
+        let statNumberHtml = document.createElement('span');
+        statNumberHtml.classList.add('stat-number');
+        statNumberHtml.innerText = statNumber;
+
+        let statContainer = document.createElement('div');
+        statContainer.classList.add(statName);
+
+
+        statContainer.append(statNameHtml, statNumberHtml);
+        div.appendChild(statContainer);
+    })
+}
 
 getPokemon(1, 151);
