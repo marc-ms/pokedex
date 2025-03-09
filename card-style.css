@@ -119,8 +119,7 @@ div {
 
 
 .sprites_img {
-    width: 90%;
-    height: auto;
+    width:80%;
     image-rendering: pixelated;
 }
 

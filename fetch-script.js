@@ -1,4 +1,3 @@
-
 async function getPokemon(startIndex, stopIndex){
     console.log('inicio')
     let requests = [];
@@ -8,7 +7,6 @@ async function getPokemon(startIndex, stopIndex){
 
     let pokemonList = await Promise.all(requests); // async to get pokemon in order
     for (let pokemon of pokemonList) {
-        console.log(pokemon);
         renderPokemon(pokemon);
     }
 }
@@ -41,15 +39,18 @@ function renderPokemon(pokeData) {
     pokemonStats.classList.add('stats-container');
     createStats(pokeData.stats, pokemonStats);
     
-
     let pokeSpritesFront = document.createElement('img')
     pokeSpritesFront.classList.add('sprites_img')
-    pokeSpritesFront.srcset = pokeData.sprites['front_default']
+    pokeSpritesFront.srcset = pokeData.sprites['front_default'];
+    //gif
+    //pokeSpritesFront.srcset = pokeData.sprites.versions['generation-v']['black-white'].animated['front_default'];
     pokeSpritesFront.setAttribute('alt', pokeData.name);
 
     let pokeSpritesBack = document.createElement('img')
     pokeSpritesBack.classList.add('sprites_img')
     pokeSpritesBack.srcset = pokeData.sprites['back_default'];
+    //gif
+    //pokeSpritesBack.srcset = pokeData.sprites.versions['generation-v']['black-white'].animated['back_default'];
     pokeSpritesBack.setAttribute('alt', pokeData.name);
 
     let pokeName = document.createElement('h4')
@@ -70,6 +71,7 @@ function renderPokemon(pokeData) {
     pokemon.append(pokemonFront, pokemonBack);
     cardContainer.appendChild(pokemon);
     pokeContainer.appendChild(cardContainer);
+    
 }
 
 function createTypes(types, div, pokeContainer) {
@@ -118,4 +120,15 @@ function createStats(stats, div) {
     })
 }
 
+function pokemonDetails() {
+    let pokemonCards = document.getElementsByClassName('card-container');
+    pokemonCards.forEach(function(card){
+        console.log(card);
+        card.addEventListener("click", function(){
+            window.location.href = "pokemon-details.html";
+        })
+    })
+}
+
 getPokemon(1, 151);
+pokemonDetails()

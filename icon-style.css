@@ -27,10 +27,15 @@
 .poke__type__icon {
     width: 45px;
     height: 45px;
-    border-radius: 15px;
-    margin: auto;
+    border-radius: 100%;
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
+}
+
+.poke__type__icon > img {
+    width: 30px;
+    height: 30px;
 }
 
 .grass {
